@@ -1,8 +1,10 @@
 # 裁判文书识别 · 对照工作台
 
-识别法院判决、裁定书等法律文书，左侧结构化展示案件信息，右侧对照查看原文。
+> **在线打开网站（图2 界面）** → **[https://hufelix765-alt.github.io/wenjianshibie/](https://hufelix765-alt.github.io/wenjianshibie/)**
+>
+> 说明：GitHub 仓库首页（图1）显示的是项目说明；实际应用请点上方链接访问。
 
-在线访问（GitHub Pages）：https://hufelix765-alt.github.io/wenjianshibie/
+识别法院判决、裁定书等法律文书，左侧结构化展示案件信息，右侧对照查看原文。
 
 ## 功能
 
@@ -23,31 +25,30 @@ npm run dev
 
 浏览器打开 [http://localhost:3000](http://localhost:3000)
 
-## 部署到 GitHub（与发文张相同方式）
+## 部署到 GitHub Pages
 
-### 1. 创建仓库并推送
+### 若打开网站看到的是本文档（而不是应用界面）
+
+请到仓库 **Settings → Pages**，将 **Source** 改为以下之一：
+
+1. **GitHub Actions**（推荐，推送后自动部署）
+2. **Deploy from a branch** → 分支 `main` → 文件夹 **`/docs`**
+
+改完后等 1～2 分钟，再访问 [https://hufelix765-alt.github.io/wenjianshibie/](https://hufelix765-alt.github.io/wenjianshibie/)
+
+### 推送代码
 
 ```bash
-git init
 git add .
-git commit -m "feat: 裁判文书识别工作台"
-git branch -M main
-git remote add origin https://github.com/你的用户名/wenjianshibie.git
-git push -u origin main
+git commit -m "chore: update static site"
+git push
 ```
 
-### 2. 开启 GitHub Pages
+本地重新生成静态站：
 
-1. 打开 GitHub 仓库 → **Settings** → **Pages**
-2. **Source** 选 **GitHub Actions**
-3. 推送代码后，Actions 会自动构建部署
-4. 访问：`https://你的用户名.github.io/wenjianshibie/`
-
-### 3. Vercel 部署（可选，访问更快）
-
-1. 登录 [vercel.com](https://vercel.com)，Import 该 GitHub 仓库
-2. 框架选 Next.js，直接 Deploy
-3. 获得独立域名，无需 `/wenjianshibie` 路径前缀
+```bash
+npm run build:pages
+```
 
 ## 技术栈
 
