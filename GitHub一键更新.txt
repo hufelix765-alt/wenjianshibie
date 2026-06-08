@@ -1,44 +1,31 @@
-裁判文书识别 · GitHub 网页更新（与发文张相同方式）
+裁判文书识别 · GitHub 网页更新
 ==========================================
 
 在线地址：https://hufelix765-alt.github.io/wenjianshibie/
 
-一、为什么还是 README 文档，不是上传界面？
---------------------------------------------
-常见 3 个原因：
+一、为什么 GitHub 上样式很丑（无颜色、按钮很大）？
+--------------------------------------------------
+因为 CSS/JS 在 assets 文件夹里，只上传 index.html 时样式加载失败。
 
-1. 只上传了 index.html，没有上传 assets 文件夹
-   （Next.js 需要 assets 里的 JS/CSS，不能用 _next 文件夹名）
+现已改为与「发文张」相同：**CSS 和 JS 全部内嵌进 index.html 单文件**。
+上传/更新这一个文件即可显示完整美化界面。
 
-2. 缺少 .nojekyll 文件
-   GitHub 会用 Jekyll 把 README 当成首页
+二、更新方法
+------------
+【推荐】双击 GitHub更新.bat
 
-3. GitHub Pages 还没重新构建
-   上传后要到 Settings → Pages 点一次 Save
-
-二、正确做法（双击运行）
-------------------------
-双击本目录的：GitHub更新.bat
-
-或手动执行：
+或手动：
   npm run build:pages
-  git add index.html assets .nojekyll _config.yml
-  git commit -m "update: pages"
-  git push
+  git push origin main
 
-三、在 GitHub 网页手动上传（git push 不方便时）
-------------------------------------------------
-1. 本地先运行：npm run build:pages
-2. 打开 https://github.com/hufelix765-alt/wenjianshibie
-3. 上传/更新这些文件（必须全部有）：
-   - index.html
-   - assets 文件夹（整个文件夹！）
-   - .nojekyll（空文件即可）
-   - _config.yml
-4. 仓库 Settings → Pages → 再点 Save
-5. 等 2 分钟，Ctrl+F5 刷新在线地址
+【仅网页上传】
+1. 本地运行 npm run build:pages
+2. 打开 GitHub 仓库，用本地的 index.html 覆盖仓库里的 index.html
+3. Settings → Pages → 点 Save 触发刷新
+4. Ctrl+F5 刷新在线地址
 
-四、说明
---------
-- github.com 仓库页显示 README 是正常的
-- 应用地址是 github.io 链接，不是仓库首页
+三、文件说明
+------------
+index.html  约 1.5MB，已内联样式和脚本（必需）
+assets/     可选，Actions 自动部署时使用
+.nojekyll   关闭 Jekyll，避免 README 当首页
