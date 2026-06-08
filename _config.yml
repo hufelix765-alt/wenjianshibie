@@ -1,0 +1,5 @@
+# 配合 .nojekyll 使用；若 Jekyll 仍参与构建，避免 README 覆盖应用首页
+theme: null
+plugins: []
+exclude:
+  - README.md
